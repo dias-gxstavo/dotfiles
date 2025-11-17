@@ -1,0 +1,162 @@
+/*
+* * * * * * * * * * * * * * * * * * * * * * * * *
+* Author: Gustavo Huguenin   	*
+* Github: https://github.com/dias-gxstavo           *
+*											   	*
+* Rofi Version: 2.0.0-dirty					*
+* * * * * * * * * * * * * * * * * * * * * * * * *
+*/
+
+/*-----Configuration-----*/
+
+configuration {
+	modes: "drun";
+	font: "JetBrainsMono Nerd Font Medium 10";
+	drun-display-format: "{name}";
+}
+
+/*-----Global-----*/
+
+* {
+	color0: #222436;
+	color2: #B38CED;
+	color3: #30354fff;
+	color4: #ADADDB;
+	color5: #4F5A80;
+	color8: none;
+	
+
+	fg-highlight: @color4;
+
+	bg-entry: @color9;
+	fg-entry: @color4;
+	fg-placeholder: #6272A4;
+
+	bg-listview: @color0;
+	fg-element: @color5;
+
+	bg-element-selected: @color8;
+	fg-element-selected: @color2;
+	border-color-element-selected: @color3;
+
+	bg-inputbar: @color0;
+
+	border-color: none;
+
+	// border-radius
+    br: 2px;
+
+	border-size-window: 2px;
+	border-size-element-selected: 2px;
+
+	spacing: 0;
+}
+
+/*-----Main Window-----*/
+
+window {
+	transparency: "real";
+	background-color: transparent;
+
+	padding: 0;
+
+	children: [mainbox];
+
+	border: @border-size-window;
+	border-color: @border-color;
+
+	border-radius: @br;
+
+	width: 50%;
+}
+
+/*-----Main Box-----*/
+
+mainbox {
+    children: [inputbar, listview];
+    orientation: vertical;
+}
+
+/*-----Input Bar-----*/
+
+inputbar {
+	children: [entry];
+
+	background-color: @bg-inputbar;
+}
+
+entry {
+	color: @fg-entry;
+	placeholder-color: @fg-placeholder;
+	background-color: @bg-entry;
+	placeholder: ">";
+
+	text-transform: bold;
+
+	border-radius: @br;
+
+	padding: 12px;
+	margin: 10px;
+    
+	vertical-align: 0.5;
+
+	border: 1;
+} 
+
+/*-----List View-----*/
+
+listview {
+	scrollbar: false;
+
+	// border: 0 0 0 2px;  // Removes the dashed line
+	border: 0;
+	lines: 7;   // 8 elements "per page"
+
+	background-color: @bg-listview;
+
+	padding: 10px;
+}
+
+element {
+	children: [element-icon, element-text];
+	spacing: 10px;
+
+	border-radius: @br;
+}
+
+element-icon {
+	vertical-aling: 0.5;
+
+	margin: 0 0 0 10px;
+}
+
+element-text {
+	vertical-align: 0.5;
+	text-transform: bold;
+
+	border-radius: @br;
+
+	color: @fg-element;
+	highlight: @fg-highlight;
+
+	padding: 5px;
+	margin: 10px 10px 10px 0;
+}
+
+element selected.normal {
+	// background-color: @bg-listview;
+	background-color: @bg-element-selected;
+
+	border: @border-size-element-selected;
+	border-color: @border-color-element-selected;
+}
+
+element-text selected {
+	color: @fg-element-selected;
+	text-transform: bold;
+}
+
+element normal.normal,
+element alternate.normal {
+	background-color: transparent;
+}
